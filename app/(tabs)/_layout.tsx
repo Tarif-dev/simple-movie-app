@@ -30,18 +30,18 @@ const TabIcon = ({ focused, icon, title }: any) => {
   );
 };
 
-const getTabOptions = (title : string, icon: any) => ({
+const getTabOptions = (title: string, icon: any) => ({
   title,
-  tabBarIcon : ({focused} : {focused : boolean}) => (
+  tabBarIcon: ({ focused }: { focused: boolean }) => (
     <TabIcon focused={focused} title={title} icon={icon} />
-  )
-})
+  ),
+});
 
 const _Layout = () => {
   return (
     <Tabs
       screenOptions={{
-        headerShown : false,
+        headerShown: false,
         tabBarShowLabel: false,
         tabBarItemStyle: {
           width: "100%",
@@ -57,24 +57,21 @@ const _Layout = () => {
           height: 52,
           position: "absolute",
           overflow: "hidden",
+          borderTopWidth: 0,
         },
       }}
     >
-      <Tabs.Screen
-        name="index"
-        options={getTabOptions("Home",icons.home)}
-      />
-      <Tabs.Screen
-        name="profile"
-        options={getTabOptions("Profile", icons.person)}
-      />
-      <Tabs.Screen
-        name="saved"
-        options={getTabOptions("Saved", icons.save)}
-      />
+      <Tabs.Screen name="index" options={getTabOptions("Home", icons.home)} />
+      
       <Tabs.Screen
         name="search"
         options={getTabOptions("Search", icons.search)}
+      />
+      <Tabs.Screen name="saved" options={getTabOptions("Saved", icons.save)} />
+
+      <Tabs.Screen
+        name="profile"
+        options={getTabOptions("Profile", icons.person)}
       />
     </Tabs>
   );
